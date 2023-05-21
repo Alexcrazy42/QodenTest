@@ -3784,11 +3784,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alexc\\source\\repos\\school-test-app\\WebApp\\WebApp.csproj",
+      "projectUniqueName": "C:\\Users\\alexc\\source\\repos\\QodenTest\\WebApp\\WebApp.csproj",
       "projectName": "WebApp",
-      "projectPath": "C:\\Users\\alexc\\source\\repos\\school-test-app\\WebApp\\WebApp.csproj",
+      "projectPath": "C:\\Users\\alexc\\source\\repos\\QodenTest\\WebApp\\WebApp.csproj",
       "packagesPath": "C:\\Users\\alexc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alexc\\source\\repos\\school-test-app\\WebApp\\obj\\",
+      "outputPath": "C:\\Users\\alexc\\source\\repos\\QodenTest\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alexc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3845,7 +3845,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

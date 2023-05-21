@@ -31,8 +31,30 @@ namespace WebApp
             var account = await _db.FindByUserNameAsync(userName);
             if (account != null)
             {
+
                 //TODO 1: Generate auth cookie for user 'userName' with external id
+
+                var claims = new Claim[]
+                    {
+                        new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
+                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                        new Claim("UserName", account.UserName),
+                        new Claim("ExternalId", account.ExternalId),
+                    };
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+                var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                var token = new JwtSecurityToken(
+                    _configuration["Jwt:Issuer"],
+                    _configuration["Jwt:Audience"],
+                    claims,
+                    expires: DateTime.UtcNow.AddMinutes(10),
+                    signingCredentials: signIn);
+
+                
                 Response.Cookies.Append("userName", account.ExternalId);
+                Response.Cookies.Append("Token", new JwtSecurityTokenHandler().WriteToken(token));
                 return Ok("Cookies added");
             }
             //TODO 2: return 404 if user not found

@@ -6773,11 +6773,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alexc\\source\\repos\\school-test-app\\WebApp.Test\\WebApp.Test.csproj",
+      "projectUniqueName": "C:\\Users\\alexc\\source\\repos\\QodenTest\\WebApp.Test\\WebApp.Test.csproj",
       "projectName": "WebApp.Test",
-      "projectPath": "C:\\Users\\alexc\\source\\repos\\school-test-app\\WebApp.Test\\WebApp.Test.csproj",
+      "projectPath": "C:\\Users\\alexc\\source\\repos\\QodenTest\\WebApp.Test\\WebApp.Test.csproj",
       "packagesPath": "C:\\Users\\alexc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alexc\\source\\repos\\school-test-app\\WebApp.Test\\obj\\",
+      "outputPath": "C:\\Users\\alexc\\source\\repos\\QodenTest\\WebApp.Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alexc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6794,8 +6794,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\alexc\\source\\repos\\school-test-app\\WebApp\\WebApp.csproj": {
-              "projectPath": "C:\\Users\\alexc\\source\\repos\\school-test-app\\WebApp\\WebApp.csproj"
+            "C:\\Users\\alexc\\source\\repos\\QodenTest\\WebApp\\WebApp.csproj": {
+              "projectPath": "C:\\Users\\alexc\\source\\repos\\QodenTest\\WebApp\\WebApp.csproj"
             }
           }
         }
@@ -6851,7 +6851,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

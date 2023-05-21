@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace WebApp
 {
@@ -17,19 +21,47 @@ namespace WebApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
+            IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true);
+            IConfigurationRoot configurationRoot = builder.Build();
+
+
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddSingleton<IAccountDatabase, AccountDatabaseStub>();
             services.AddSingleton<IAccountCache, AccountCache>();
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options =>
+            services.AddSingleton<IAccountService, AccountService>();
+
+
+
+
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-                    options.SlidingExpiration = true;
-                    //options.AccessDeniedPath = "/Forbidden/";
-                });
-            services.AddScoped<IAccountDatabase, AccountDatabaseStub>();
-            services.AddScoped<IAccountCache, AccountCache>();
-            services.AddScoped<IAccountService, AccountService>();
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = configurationRoot["Jwt:Audience"],
+                    ValidIssuer = configurationRoot["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configurationRoot["Jwt:Key"]))
+                };
+            });
+
+            // cookie authtorization attempt
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddJwtBearer(options => {
+            //        options.Events = new JwtBearerEvents
+            //        {
+            //            OnMessageReceived = context =>
+            //            {
+            //                context.Token = context.Request.Cookies["Token"];
+            //                return Task.CompletedTask;
+            //            }
+            //        };
+            //});
+
 
         }
 
@@ -44,7 +76,7 @@ namespace WebApp
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseMvc();
-            app.Run(async (context) => { await context.Response.WriteAsync("Hello World!"); });
+            app.Run(async (context) => { await context.Response.WriteAsync("Hello World!");});
         }
     }
 }
