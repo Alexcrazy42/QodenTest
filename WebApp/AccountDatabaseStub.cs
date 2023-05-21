@@ -67,7 +67,8 @@ namespace WebApp
         {
             lock (this)
             {
-                var account = _accounts.Values.FirstOrDefault(x => x.UserName == userName);
+                //var account = _accounts.Values.FirstOrDefault(x => x.UserName == userName);
+                var account = _accounts.FirstOrDefault(x => x.Value.UserName == userName).Value;
                 return Task.FromResult(account?.Clone());
             }
         }

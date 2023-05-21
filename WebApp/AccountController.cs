@@ -1,10 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp
 {
     // TODO 4: unauthorized users should receive 401 status code
+    //[Authorize]
     [Route("api/account")]
     public class AccountController : Controller
     {
@@ -15,19 +19,30 @@ namespace WebApp
             _accountService = accountService;
         }
 
-        [Authorize] 
+        [AllowAnonymous]
         [HttpGet]
         public ValueTask<Account> Get()
         {
-            return _accountService.LoadOrCreateAsync(null /* TODO 3: Get user id from cookie */);
+            /* TODO 3: Get user id from cookie */
+            return _accountService.LoadOrCreateAsync(Request.Cookies["userName"]);
         }
 
         //TODO 5: Endpoint should works only for users with "Admin" Role
-        [Authorize]
+        [AllowAnonymous]
         [HttpGet("{id}")]
-        public Account GetByInternalId([FromRoute] int id)
+        public async Task<IActionResult> GetByInternalId([FromRoute] int id)
         {
-            return _accountService.GetFromCache(id);
+            var account = _accountService.LoadOrCreateAsync(Request.Cookies["userName"]);
+            if (account.Result.Role == "Admin")
+            {
+                //return _accountService.GetFromCache(id);
+                return Ok(_accountService.LoadOrCreateAsync(id));
+            }
+            else
+            {
+                return Ok("Only to admin");
+            }
+            
         }
 
         [Authorize]
