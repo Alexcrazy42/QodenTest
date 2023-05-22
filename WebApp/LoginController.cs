@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System.Security.Principal;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace WebApp
 {
@@ -33,7 +35,6 @@ namespace WebApp
             {
 
                 //TODO 1: Generate auth cookie for user 'userName' with external id
-
                 var claims = new Claim[]
                     {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
@@ -52,9 +53,28 @@ namespace WebApp
                     expires: DateTime.UtcNow.AddMinutes(10),
                     signingCredentials: signIn);
 
-                
                 Response.Cookies.Append("userName", account.ExternalId);
                 Response.Cookies.Append("Token", new JwtSecurityTokenHandler().WriteToken(token));
+                //IServiceCollection services = new ServiceCollection();
+                //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                //    .AddJwtBearer(options =>
+                //    {
+
+
+                //        options.Events = new JwtBearerEvents
+                //        {
+                //            OnMessageReceived = context =>
+                //            {
+                //                if (context.Request.Cookies.ContainsKey("Token"))
+                //                {
+                //                    context.Token = context.Request.Cookies["Token"];
+                //                }
+                //                return Task.CompletedTask;
+                //            }
+                //        };
+                //    });
+
+
                 return Ok("Cookies added");
             }
             //TODO 2: return 404 if user not found
