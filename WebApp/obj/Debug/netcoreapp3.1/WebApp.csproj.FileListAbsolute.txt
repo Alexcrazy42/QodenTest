@@ -63,3 +63,8 @@ C:\Users\alexc\source\repos\QodenTest\WebApp\obj\Debug\netcoreapp3.1\WebApp.cspr
 C:\Users\alexc\source\repos\QodenTest\WebApp\obj\Debug\netcoreapp3.1\WebApp.dll
 C:\Users\alexc\source\repos\QodenTest\WebApp\obj\Debug\netcoreapp3.1\WebApp.pdb
 C:\Users\alexc\source\repos\QodenTest\WebApp\obj\Debug\netcoreapp3.1\WebApp.genruntimeconfig.cache
+C:\Users\alexc\source\repos\QodenTest\WebApp\obj\Debug\netcoreapp3.1\staticwebassets\WebApp.StaticWebAssets.Pack.cache
+C:\Users\alexc\source\repos\QodenTest\WebApp\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.WebApp.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\alexc\source\repos\QodenTest\WebApp\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.build.WebApp.props
+C:\Users\alexc\source\repos\QodenTest\WebApp\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildMultiTargeting.WebApp.props
+C:\Users\alexc\source\repos\QodenTest\WebApp\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildTransitive.WebApp.props

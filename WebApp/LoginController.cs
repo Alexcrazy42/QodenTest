@@ -55,24 +55,6 @@ namespace WebApp
 
                 Response.Cookies.Append("userName", account.ExternalId);
                 Response.Cookies.Append("Token", new JwtSecurityTokenHandler().WriteToken(token));
-                //IServiceCollection services = new ServiceCollection();
-                //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                //    .AddJwtBearer(options =>
-                //    {
-
-
-                //        options.Events = new JwtBearerEvents
-                //        {
-                //            OnMessageReceived = context =>
-                //            {
-                //                if (context.Request.Cookies.ContainsKey("Token"))
-                //                {
-                //                    context.Token = context.Request.Cookies["Token"];
-                //                }
-                //                return Task.CompletedTask;
-                //            }
-                //        };
-                //    });
 
 
                 return Ok("Cookies added");

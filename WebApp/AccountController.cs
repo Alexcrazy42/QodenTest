@@ -36,7 +36,6 @@ namespace WebApp
             var account = _accountService.LoadOrCreateAsync(Request.Cookies["userName"]);
             if (account.Result.Role == "Admin")
             {
-                //return _accountService.GetFromCache(id);
                 return Ok(_accountService.GetFromCache(id));
             }
             else
@@ -46,12 +45,14 @@ namespace WebApp
             
         }
 
-        [HttpPost("counter")]
-        public async Task UpdateAccount()
+        [HttpGet("counter")]
+        public async Task<IActionResult> UpdateAccount()
         {
             //Update account in cache, don't bother saving to DB, this is not an objective of this task.
             var account = await Get();
             account.Counter++;
+
+            return Ok("Count + 1");
         }
     }
 }

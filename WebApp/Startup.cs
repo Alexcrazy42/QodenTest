@@ -33,44 +33,7 @@ namespace WebApp
             services.AddSingleton<IAccountService, AccountService>();
 
 
-
-
-
-            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            //{
-            //    options.RequireHttpsMetadata = false;
-            //    options.SaveToken = true;
-            //    options.TokenValidationParameters = new TokenValidationParameters()
-            //    {
-            //        ValidateIssuer = true,
-            //        ValidateAudience = true,
-            //        ValidAudience = configurationRoot["Jwt:Audience"],
-            //        ValidIssuer = configurationRoot["Jwt:Issuer"],
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configurationRoot["Jwt:Key"]))
-            //    };
-            //});
-
-            //cookie authorization attempt
-            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //    .AddJwtBearer(options =>
-            //    {
-
-
-
-            //        options.Events = new JwtBearerEvents
-            //        {
-
-
-
-            //            OnMessageReceived = context =>
-            //            {
-            //                context.Token = context.Request.Cookies["Token"];
-            //                return Task.CompletedTask;
-            //            }
-            //        };
-            //    });
-
-
+            
             services.AddAuthentication(configureOptions =>
             {
                 configureOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
