@@ -34,13 +34,13 @@ namespace WebApp
             {
                 if (!_accounts.TryGetValue(id, out var account))
                 {
-                    Account account1 = new Account()
+                    Account newAccountFromCache = new Account()
                     {
                         InternalId = ++_internalIdCounter,
                         ExternalId = id
                     };
-                    _accounts[id] = account1;
-                    return Task.FromResult(account1.Clone());
+                    _accounts[id] = newAccountFromCache;
+                    return Task.FromResult(newAccountFromCache.Clone());
                 }
                 return Task.FromResult(account.Clone());
             }

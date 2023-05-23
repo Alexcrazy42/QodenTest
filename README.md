@@ -2,11 +2,11 @@
 # Здравствуйте, я Александр! ![](https://github.com/blackcater/blackcater/raw/main/images/Hi.gif) 
 
 # Результаты тестового задания: 
-### 1) ToDo 0 - 5 сделаны 
-### 2) ToDo 6 закрыта. Описание: в AccountDatabaseStub изменен GetOrCreateAccountAsync(string id), теперь при неудачной попытке .... 
+### 1) ToDo 0 - 5 закрыты
+### 2) ToDo 6 закрыта. Описание решения: в AccountDatabaseStub изменен GetOrCreateAccountAsync(string id), теперь при попытке получить аккаунт, которого нет в кэше создается новый аккаунт с таким externalId, и кладется в кэш.
 
 # С чем впервые столкнулся при решении тестового задания: 
-### 1) Работа с cockies 
+### 1) Работа с cookies 
 ### 2) Авторизация на базе JWT токена из cookies
 ### 3) Кэш веб-приложения (хочу поработать с Redis)
 
