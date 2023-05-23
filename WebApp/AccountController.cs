@@ -45,10 +45,10 @@ namespace WebApp
             
         }
 
-        [HttpGet("counter")]
+        [HttpPost("counter")]
         public async Task<IActionResult> UpdateAccount()
         {
-            //Update account in cache, don't bother saving to DB, this is not an objective of this task.
+            //Update account in cache, don't b other saving to DB, this is not an objective of this task.
             var account = await Get();
             account.Counter++;
 
