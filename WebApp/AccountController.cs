@@ -45,7 +45,7 @@ namespace WebApp
             
         }
 
-        [HttpPost("counter")]
+        [HttpGet("counter")]
         public async Task<IActionResult> UpdateAccount()
         {
             //Update account in cache, don't b other saving to DB, this is not an objective of this task.
